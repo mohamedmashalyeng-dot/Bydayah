@@ -1,0 +1,77 @@
+/*
+ * Design tokens — بداية
+ * التوزيع المقصود: نحو 70% مساحات فاتحة، 25% أخضر عميق، 5% ذهبي.
+ * الذهبي الأساسي زخرفي فقط؛ للنص الصغير يُستخدم gold-ink على الفاتح وgold-soft على الأخضر.
+ */
+:root {
+  /* الألوان الأساسية */
+  --green: #234a45;
+  --green-deep: #1a3935;
+  --gold: #b48c59;
+  --gold-ink: #7a5c33; /* 5.6:1 على العاجي */
+  --gold-soft: #d2b48a; /* 5:1 على الأخضر */
+  --ivory: #f7f4ee;
+  --mist: #eaefea;
+  --paper: #fcfbf8;
+  --ink: #203b37;
+  --ink-muted: #4e625e; /* 5.9:1 على العاجي */
+  --on-green: #f7f4ee;
+  --on-green-muted: #c9d3cf; /* 6.4:1 على الأخضر */
+  --error: #9a3b2e;
+  --error-bg: #f7ebe7;
+
+  --line: rgb(32 59 55 / 0.12);
+  --line-strong: rgb(32 59 55 / 0.24);
+  --line-on-green: rgb(247 244 238 / 0.18);
+  --section-bg: var(--ivory);
+
+  /* الخط: Tajawal وحده في كل الموقع؛ البقية احتياط إلى أن يُحمَّل */
+  --font-sans: 'Tajawal', 'Segoe UI', Tahoma, system-ui, sans-serif;
+
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --h1: clamp(2.25rem, 1.4rem + 3.4vw, 4.25rem);
+  --h2: clamp(1.75rem, 1.3rem + 1.9vw, 2.875rem);
+  --h3: 1.1875rem;
+
+  /* المسافات والتكوين */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --section-y: clamp(72px, 4rem + 5vw, 144px);
+  --gutter: 20px;
+  --content-max: 1200px;
+  --header-h: 72px;
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 20px;
+
+  /* الحركة */
+  --dur-fast: 160ms;
+  --dur: 200ms;
+  --dur-step: 220ms;
+  --dur-reveal: 640ms;
+  --stagger: 75ms;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 600px) {
+  :root {
+    --gutter: 24px;
+  }
+}
+
+@media (min-width: 960px) {
+  :root {
+    --gutter: 40px;
+    --header-h: 80px;
+  }
+}

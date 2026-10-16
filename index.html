@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>بداية | Bidayah — وساطة زواج سرية بهدف الزواج الشرعي</title>
+    <meta name="description" content="بداية خدمة وساطة إنسانية خاصة تساعدك في البحث عن شريك الحياة بهدف الزواج الشرعي: طلب سري، وفريق يدرس طلبك ويبحث معك، ولا مشاركة لبيانات التواصل دون موافقتك." />
+    <meta name="theme-color" content="#F7F4EE" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:site_name" content="بداية | Bidayah" />
+    <meta property="og:title" content="بداية | Bidayah — شريك حياتك قد يكون أقرب مما تتخيل" />
+    <meta property="og:description" content="وساطة زواج سرية… نحو بداية حياة جديدة. دون ملفات عامة، ووساطة بشرية، ومشاركة بموافقتك." />
+    <meta property="og:image" content="https://bidayatzawaj.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // تُفعَّل حركة الظهور فقط إن لم يطلب المستخدم تقليل الحركة. إن لم يكتمل تحميل
+      // السكربت الرئيسي خلال ثوانٍ، تُلغى الحالة المخفية ليبقى المحتوى ظاهرًا دائمًا.
+      (function () {
+        var d = document.documentElement;
+        try {
+          if ('IntersectionObserver' in window && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+            d.classList.add('motion');
+            setTimeout(function () { if (!window.__bidayahReady) d.classList.remove('motion'); }, 3500);
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"><!--app--></div>
+    <script type="module" src="/src/home/main.tsx"></script>
+  </body>
+</html>

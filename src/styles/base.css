@@ -1,0 +1,755 @@
+/* أساسيات مشتركة بين الصفحات: التهيئة، الطباعة، الأقسام، الأزرار، الهيدر، الفوتر، الدعوة الختامية، الحركة. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+html.menu-open {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.85;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 599px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+h1,
+h2 {
+  text-wrap: balance;
+}
+
+p,
+li {
+  text-wrap: pretty;
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+a {
+  color: var(--green);
+  text-underline-offset: 0.3em;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--green);
+  outline-offset: 3px;
+}
+
+.section--green :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--gold-soft);
+}
+
+::selection {
+  background: rgb(180 140 89 / 0.28);
+}
+
+.container {
+  width: min(100% - 2 * var(--gutter), var(--content-max));
+  margin-inline: auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 16px;
+  top: 12px;
+  z-index: 100;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  background: var(--green);
+  color: var(--ivory);
+  font-weight: 500;
+  text-decoration: none;
+  transform: translateY(-160%);
+  transition: transform var(--dur) var(--ease);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* ———— عناوين صغيرة ———— */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  color: var(--gold-ink);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1.5px;
+  background: var(--gold);
+}
+
+.eyebrow--light {
+  color: var(--gold-soft);
+}
+
+/* ———— الأقسام ———— */
+
+.section {
+  padding-block: var(--section-y);
+  background: var(--section-bg);
+}
+
+.section--mist {
+  --section-bg: var(--mist);
+}
+
+.section--green {
+  --section-bg: var(--green);
+  color: var(--on-green);
+}
+
+.section h2 {
+  margin: 0 0 16px;
+  color: var(--green);
+  font-size: var(--h2);
+  line-height: 1.35;
+}
+
+.section-head {
+  max-width: 720px;
+  margin-bottom: clamp(36px, 4vw, 56px);
+}
+
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-lead {
+  max-width: 40em;
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: var(--text-lg);
+}
+
+.section-head--center .section-lead {
+  margin-inline: auto;
+}
+
+/* ———— الأزرار ———— */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 10px 22px;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.btn .icon {
+  transition: transform var(--dur) var(--ease);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--primary {
+  background: var(--green);
+  color: var(--ivory);
+}
+
+.btn--primary:hover {
+  background: var(--green-deep);
+}
+
+.btn--primary:hover .icon {
+  transform: translateX(-3px);
+}
+
+.btn--ghost {
+  border-color: var(--line-strong);
+  background: transparent;
+  color: var(--green);
+}
+
+.btn--ghost:hover {
+  border-color: var(--green);
+  background: rgb(35 74 69 / 0.05);
+}
+
+.btn--lg {
+  min-height: 54px;
+  padding-inline: 28px;
+  font-size: 1.0625rem;
+}
+
+.btn--sm {
+  min-height: 42px;
+  padding: 6px 18px;
+  font-size: var(--text-sm);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn:disabled,
+.btn[aria-disabled='true'] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 4px 10px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--green);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 0.35em;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease);
+}
+
+.link-btn:hover {
+  background: rgb(35 74 69 / 0.06);
+}
+
+/* ———— الشعار ———— */
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--green);
+  text-decoration: none;
+}
+
+.logo__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.logo__ar {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.logo__en {
+  color: var(--ink-muted);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em; /* لاتيني فقط */
+  text-transform: uppercase;
+}
+
+.logo--light {
+  --mark-a: var(--gold-soft);
+  --mark-b: var(--ivory);
+  color: var(--ivory);
+}
+
+.logo--light .logo__en {
+  color: var(--on-green-muted);
+}
+
+/* ———— الهيدر ———— */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  border-bottom: 1px solid transparent;
+  background: rgb(247 244 238 / 0);
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+}
+
+.site-header.is-scrolled,
+.site-header.is-open {
+  border-bottom-color: var(--line);
+  background: rgb(247 244 238 / 0.96);
+}
+
+.site-header__bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  height: var(--header-h);
+}
+
+.site-header .logo {
+  margin-inline-end: auto;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  position: relative;
+  display: inline-block;
+  padding-block: 6px;
+  color: var(--ink);
+  font-size: 0.96875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color var(--dur) var(--ease);
+}
+
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 1.5px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur) var(--ease);
+}
+
+.site-nav a:hover {
+  color: var(--green);
+}
+
+.site-nav a:hover::after,
+.site-nav a[aria-current='page']::after {
+  transform: scaleX(1);
+}
+
+.site-nav a[aria-current='page'] {
+  color: var(--green);
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 6px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--green);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color var(--dur) var(--ease);
+}
+
+.menu-toggle:hover {
+  background: rgb(35 74 69 / 0.05);
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: var(--header-h) 0 0;
+  overflow-y: auto;
+  border-top: 1px solid var(--line);
+  background: var(--ivory);
+}
+
+.mobile-menu:not([hidden]) {
+  animation: menu-in var(--dur-step) var(--ease-out);
+}
+
+.mobile-menu ul {
+  margin: 8px 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-menu li + li {
+  border-top: 1px solid var(--line);
+}
+
+.mobile-menu a:not(.btn) {
+  display: block;
+  padding-block: 16px;
+  color: var(--ink);
+  font-size: 1.1875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.mobile-menu a[aria-current='page'] {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.link-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link-back:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* القائمة في منتصف الهيدر تمامًا، بين الشعار وزر الطلب. */
+@media (min-width: 960px) {
+  .site-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .site-nav ul {
+    gap: 36px;
+  }
+}
+
+@media (max-width: 959px) {
+  .site-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 960px) {
+  .mobile-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 599px) {
+  .site-header__cta {
+    display: none;
+  }
+}
+
+/* ———— الفاصل ———— */
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.divider__line {
+  flex: 1;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+/* ———— الدعوة الأخيرة: نص داخل قوس من مسارين ———— */
+
+.arch {
+  position: relative;
+  max-width: 720px;
+  margin-inline: auto;
+  container-type: inline-size;
+}
+
+.arch__frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.arch__half {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: calc(50cqi - 14px);
+  border: 2px solid;
+  border-bottom: 0;
+}
+
+.arch__half--a {
+  inset-inline-start: 0;
+  border-color: var(--green);
+  border-inline-end: 0;
+  border-start-start-radius: calc(50cqi - 14px);
+}
+
+.arch__half--b {
+  inset-inline-end: 0;
+  border-color: var(--gold);
+  border-inline-start: 0;
+  border-start-end-radius: calc(50cqi - 14px);
+}
+
+.arch__dot {
+  position: absolute;
+  top: -5px;
+  left: calc(50% - 5px);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.arch__content {
+  position: relative;
+  padding: max(96px, 25cqi) clamp(20px, 9cqi, 80px) clamp(40px, 9cqi, 72px);
+  text-align: center;
+}
+
+.section .arch__content h2 {
+  margin-bottom: 12px;
+  font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3rem);
+}
+
+.arch__content p {
+  max-width: 28em;
+  margin: 0 auto 28px;
+  color: var(--ink-muted);
+  font-size: var(--text-lg);
+}
+
+.arch__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.motion .arch .arch__half {
+  transition: clip-path 1.3s var(--ease-out) 0.15s;
+}
+
+.motion .arch:not([data-shown]) .arch__half {
+  clip-path: inset(100% 0 0 0);
+}
+
+.motion .arch .arch__dot {
+  transition:
+    opacity 400ms var(--ease-out) 1.2s,
+    transform 400ms var(--ease-out) 1.2s;
+}
+
+.motion .arch:not([data-shown]) .arch__dot {
+  opacity: 0;
+  transform: scale(0.3);
+}
+
+@media (max-width: 599px) {
+  .arch__content .btn {
+    width: 100%;
+  }
+}
+
+/* ———— الفوتر ———— */
+
+.site-footer {
+  padding-block: 64px 28px;
+  background: var(--green);
+  color: var(--on-green-muted);
+}
+
+.site-footer__grid {
+  display: grid;
+  gap: 40px;
+}
+
+.site-footer__tagline {
+  margin: 16px 0 0;
+}
+
+.site-footer__title {
+  margin: 0 0 12px;
+  color: var(--gold-soft);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.site-footer__nav ul {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-footer__nav a {
+  color: var(--ivory);
+  text-decoration: none;
+}
+
+.site-footer__nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--gold-soft);
+}
+
+.site-footer__disclaimer {
+  margin: 0;
+  line-height: 1.95;
+}
+
+.site-footer__bottom {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-on-green);
+  font-size: var(--text-sm);
+}
+
+.site-footer__bottom p {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .site-footer__grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+
+  .site-footer__disclaimer {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-footer__grid {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 3fr) minmax(0, 5fr);
+    gap: 56px;
+  }
+
+  .site-footer__disclaimer {
+    grid-column: auto;
+  }
+}
+
+/* ———— الظهور عند التمرير ———— */
+/* الإخفاء مشروط بالصنف motion، الذي لا يُضاف عند طلب تقليل الحركة. */
+
+.motion [data-reveal] {
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * var(--stagger));
+}
+
+.motion [data-reveal]:not([data-shown]) {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}

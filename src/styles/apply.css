@@ -1,0 +1,394 @@
+/* صفحة استمارة الطلب /apply/ */
+
+.apply {
+  padding-block: clamp(20px, 4vw, 56px) clamp(64px, 8vw, 120px);
+}
+
+.apply__layout {
+  display: grid;
+  gap: 24px;
+}
+
+.apply__main {
+  min-width: 0;
+}
+
+.apply__main:focus {
+  outline: none;
+}
+
+.apply__title {
+  margin: 0 0 12px;
+  color: var(--green);
+  font-size: clamp(2rem, 1.5rem + 1.8vw, 2.875rem);
+  line-height: 1.3;
+}
+
+.apply__intro {
+  margin: 0 0 20px;
+  color: var(--ink-muted);
+}
+
+@media (min-width: 1024px) {
+  .apply__layout {
+    grid-template-columns: minmax(0, 330px) minmax(0, 1fr);
+    gap: 64px;
+    align-items: start;
+  }
+}
+
+/* ———— التنبيهات داخل الخطوة ———— */
+
+.step .notice {
+  margin-top: 24px;
+}
+
+/* ———— مؤشر الخطوات ———— */
+
+.stepper ol {
+  position: relative;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stepper ol::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 17px;
+  top: 24px;
+  bottom: 24px;
+  width: 1.5px;
+  background: var(--line-strong);
+}
+
+.stepper__item button {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 48px;
+  padding: 6px 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  color: var(--ink-muted);
+  font-weight: 500;
+  text-align: start;
+  cursor: pointer;
+}
+
+.stepper__item button:disabled {
+  cursor: default;
+}
+
+.stepper__num {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--line-strong);
+  border-radius: 50%;
+  background: var(--ivory);
+  font-size: var(--text-sm);
+  transition:
+    background-color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.stepper__item.is-done .stepper__num {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.stepper__item.is-done button {
+  color: var(--ink);
+}
+
+.stepper__item.is-current .stepper__num {
+  border-color: var(--green);
+  background: var(--green);
+  color: var(--ivory);
+}
+
+.stepper__item.is-current button {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.stepper__item button:not(:disabled):hover .stepper__title {
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 0.35em;
+}
+
+.progress {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.progress span {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--line-strong);
+  transition: background-color var(--dur) var(--ease);
+}
+
+.progress .is-done {
+  background: var(--green);
+}
+
+.progress .is-current {
+  background: var(--gold);
+}
+
+@media (max-width: 1023px) {
+  .stepper {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .progress {
+    display: none;
+  }
+}
+
+/* ———— بطاقة الاستمارة ———— */
+
+.apply-form {
+  padding: clamp(20px, 4vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+
+@media (max-width: 599px) {
+  .apply-form {
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+}
+
+.step__head {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.step__count {
+  margin: 0 0 4px;
+  color: var(--gold-ink);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.step__head h2 {
+  margin: 0 0 6px;
+  color: var(--green);
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  line-height: 1.4;
+}
+
+.step__desc {
+  margin: 0;
+  color: var(--ink-muted);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .step--fwd {
+    animation: step-fwd var(--dur-step) var(--ease-out);
+  }
+
+  .step--back {
+    animation: step-back var(--dur-step) var(--ease-out);
+  }
+}
+
+/* في الواجهة العربية تتقدم الخطوات نحو اليسار. */
+@keyframes step-fwd {
+  from {
+    opacity: 0;
+    transform: translateX(-14px);
+  }
+}
+
+@keyframes step-back {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+}
+
+/* ———— المراجعة ———— */
+
+.review {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.review__title {
+  margin: 0 0 4px;
+  color: var(--green);
+  font-size: 1.375rem;
+}
+
+.review__lead {
+  margin: 0 0 16px;
+  color: var(--ink-muted);
+}
+
+.review__group {
+  margin-top: 12px;
+  padding: 14px 18px 6px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.review__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.review__head h4 {
+  margin: 0;
+  color: var(--green);
+  font-size: 1.0625rem;
+}
+
+.review dl {
+  margin: 0;
+}
+
+.review__row {
+  display: grid;
+  gap: 0 16px;
+  padding-block: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.review dt {
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+}
+
+.review dd {
+  margin: 0;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+
+.review dd.is-empty {
+  color: var(--ink-muted);
+  font-weight: 400;
+}
+
+@media (min-width: 640px) {
+  .review__row {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  }
+}
+
+.policy-draft {
+  margin-top: 24px;
+  padding: 0 18px;
+  border: 1px dashed rgb(122 92 51 / 0.5);
+  border-radius: var(--radius);
+  background: #fff;
+}
+
+.policy-draft summary {
+  padding-block: 14px;
+  color: var(--green);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.badge {
+  display: inline-block;
+  margin-inline-start: 10px;
+  padding: 1px 10px;
+  border-radius: 999px;
+  background: #f3ebdd;
+  color: var(--gold-ink);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  vertical-align: middle;
+}
+
+.policy-draft ul {
+  margin: 0 0 12px;
+  padding-inline-start: 20px;
+  color: var(--ink-muted);
+}
+
+.policy-draft__note {
+  margin: 0 0 16px;
+  color: var(--gold-ink);
+  font-size: var(--text-sm);
+}
+
+/* ———— أزرار التنقل ———— */
+
+.step__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.step__nav .btn--primary {
+  margin-inline-start: auto;
+}
+
+@media (max-width: 599px) {
+  .step__nav {
+    flex-direction: column;
+  }
+
+  .step__nav .btn {
+    width: 100%;
+  }
+}
+
+.apply-done {
+  padding: clamp(32px, 6vw, 64px) clamp(20px, 4vw, 48px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  text-align: center;
+}
+
+.apply-done .icon {
+  margin: 0 auto 12px;
+  color: var(--green);
+}
+
+.apply-done h2 {
+  margin: 0 0 8px;
+  color: var(--green);
+}
+
+.apply-done p {
+  max-width: 34em;
+  margin: 0 auto 24px;
+  color: var(--ink-muted);
+}
+
+.apply-done:focus {
+  outline: none;
+}

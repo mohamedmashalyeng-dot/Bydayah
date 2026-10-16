@@ -1,0 +1,7 @@
+node_modules
+dist
+.ssr
+.env
+.env.local
+deploy.settings.ps1
+deploy.state.json
