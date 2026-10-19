@@ -23,7 +23,7 @@ html.menu-open {
 
 body {
   margin: 0;
-  background: var(--ivory);
+  background: var(--white);
   color: var(--ink);
   font-family: var(--font-sans);
   font-size: var(--text-base);
@@ -84,7 +84,7 @@ textarea {
 }
 
 ::selection {
-  background: rgb(180 140 89 / 0.28);
+  background: rgb(167 122 47 / 0.25);
 }
 
 .container {
@@ -112,7 +112,7 @@ textarea {
   padding: 10px 20px;
   border-radius: var(--radius-sm);
   background: var(--green);
-  color: var(--ivory);
+  color: var(--white);
   font-weight: 500;
   text-decoration: none;
   transform: translateY(-160%);
@@ -224,12 +224,12 @@ textarea {
 }
 
 .btn--primary {
-  background: var(--green);
-  color: var(--ivory);
+  background: var(--gold);
+  color: #fff;
 }
 
 .btn--primary:hover {
-  background: var(--green-deep);
+  background: var(--gold-deep);
 }
 
 .btn--primary:hover .icon {
@@ -244,7 +244,7 @@ textarea {
 
 .btn--ghost:hover {
   border-color: var(--green);
-  background: rgb(35 74 69 / 0.05);
+  background: rgb(70 86 74 / 0.05);
 }
 
 .btn--lg {
@@ -289,7 +289,7 @@ textarea {
 }
 
 .link-btn:hover {
-  background: rgb(35 74 69 / 0.06);
+  background: rgb(70 86 74 / 0.06);
 }
 
 /* ———— الشعار ———— */
@@ -297,38 +297,33 @@ textarea {
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: var(--green);
   text-decoration: none;
 }
 
-.logo__text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
+.logo__art {
+  display: block;
+  width: auto;
+  height: 40px;
 }
 
-.logo__ar {
-  font-size: 1.5rem;
-  font-weight: 700;
+.logo__art--lockup {
+  height: 104px;
 }
 
-.logo__en {
-  color: var(--ink-muted);
-  font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.16em; /* لاتيني فقط */
-  text-transform: uppercase;
-}
-
+/* فوق الأخضر: الكلمة بلون الكريمي والقلب بالذهبي الفاتح */
 .logo--light {
-  --mark-a: var(--gold-soft);
-  --mark-b: var(--ivory);
-  color: var(--ivory);
+  --logo-ink: var(--on-green);
+  --logo-accent: var(--gold-soft);
 }
 
-.logo--light .logo__en {
-  color: var(--on-green-muted);
+@media (min-width: 960px) {
+  .logo__art {
+    height: 50px;
+  }
+
+  .logo__art--lockup {
+    height: 116px;
+  }
 }
 
 /* ———— الهيدر ———— */
@@ -338,7 +333,7 @@ textarea {
   top: 0;
   z-index: 50;
   border-bottom: 1px solid transparent;
-  background: rgb(247 244 238 / 0);
+  background: rgb(255 255 255 / 0);
   transition:
     background-color var(--dur) var(--ease),
     border-color var(--dur) var(--ease);
@@ -347,7 +342,7 @@ textarea {
 .site-header.is-scrolled,
 .site-header.is-open {
   border-bottom-color: var(--line);
-  background: rgb(247 244 238 / 0.96);
+  background: rgb(255 255 255 / 0.96);
 }
 
 .site-header__bar {
@@ -422,7 +417,7 @@ textarea {
 }
 
 .menu-toggle:hover {
-  background: rgb(35 74 69 / 0.05);
+  background: rgb(70 86 74 / 0.05);
 }
 
 .mobile-menu {
@@ -430,7 +425,7 @@ textarea {
   inset: var(--header-h) 0 0;
   overflow-y: auto;
   border-top: 1px solid var(--line);
-  background: var(--ivory);
+  background: var(--white);
 }
 
 .mobile-menu:not([hidden]) {
@@ -662,7 +657,7 @@ textarea {
 }
 
 .site-footer__nav a {
-  color: var(--ivory);
+  color: var(--white);
   text-decoration: none;
 }
 

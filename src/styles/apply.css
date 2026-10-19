@@ -92,7 +92,7 @@
   height: 36px;
   border: 1.5px solid var(--line-strong);
   border-radius: 50%;
-  background: var(--ivory);
+  background: var(--white);
   font-size: var(--text-sm);
   transition:
     background-color var(--dur) var(--ease),
@@ -112,7 +112,7 @@
 .stepper__item.is-current .stepper__num {
   border-color: var(--green);
   background: var(--green);
-  color: var(--ivory);
+  color: var(--white);
 }
 
 .stepper__item.is-current button {
@@ -304,7 +304,7 @@
 .policy-draft {
   margin-top: 24px;
   padding: 0 18px;
-  border: 1px dashed rgb(122 92 51 / 0.5);
+  border: 1px dashed rgb(128 96 42 / 0.5);
   border-radius: var(--radius);
   background: #fff;
 }
@@ -321,7 +321,7 @@
   margin-inline-start: 10px;
   padding: 1px 10px;
   border-radius: 999px;
-  background: #f3ebdd;
+  background: #f5ead8;
   color: var(--gold-ink);
   font-size: 0.8125rem;
   font-weight: 700;

@@ -276,7 +276,7 @@
 .journey__step:last-child .journey__node {
   border-color: var(--green);
   background: var(--green);
-  color: var(--ivory);
+  color: var(--white);
   box-shadow:
     0 0 0 5px var(--section-bg),
     0 0 0 6.5px var(--gold);
@@ -657,7 +657,7 @@
   top: 48px;
   width: 400px;
   height: auto;
-  color: var(--ivory);
+  color: var(--white);
   opacity: 0.09;
   pointer-events: none;
 }
@@ -678,7 +678,7 @@
 }
 
 .section.privacy h2 {
-  color: var(--ivory);
+  color: var(--white);
   font-size: clamp(2rem, 1.3rem + 2.7vw, 3.5rem);
   line-height: 1.35;
 }
@@ -709,7 +709,7 @@
 
 .privacy__point h3 {
   margin: 14px 0 6px;
-  color: var(--ivory);
+  color: var(--white);
   font-size: var(--h3);
 }
 

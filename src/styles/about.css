@@ -250,7 +250,7 @@
 /* ———— ما هي بداية وما ليست ———— */
 
 .section.identity h2 {
-  color: var(--ivory);
+  color: var(--white);
 }
 
 .identity__cols {
@@ -285,7 +285,7 @@
 }
 
 .identity__col--is li {
-  color: var(--ivory);
+  color: var(--white);
 }
 
 .identity__col--is .icon {

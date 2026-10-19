@@ -1,10 +1,15 @@
 /**
- * الرمز البصري لبداية: «مساران يلتقيان عند بداية جديدة».
- * خطان مستقلان ينطلقان من نقطتين مختلفتين ثم يرتفعان ليكوّنا قوسًا مفتوحًا،
- * وتتوسط الفجوةَ في أعلاه نقطة ذهبية. أصل بصري قابل للاستبدال، وليس شعارًا معتمدًا.
+ * الهوية البصرية لبداية.
+ * الشعار المعتمد: كلمة «بداية» يتوسطها قلب من شخصين (أخضر وذهبي)، وأسفلها BIDAYAH.
+ * الرسوم الزخرفية (HeroArt وMotifLines): «مساران يلتقيان عند بداية جديدة».
  */
 
 import { brand } from '../content/site'
+import { HEART, LATIN, MARK } from './logoPaths'
+
+/** ألوان الشعار من متغيرات CSS، لتتبدّل في النسخة الفاتحة فوق الأخضر. */
+const INK = 'var(--logo-ink)'
+const ACCENT = 'var(--logo-accent)'
 
 /*
  * هندسة الرسم الرئيسي: مركز القوس (260،300) ونصف قطره 132.
@@ -14,36 +19,56 @@ const PATH_GOLD = 'M28 584H70Q128 584 128 526V300A132 132 0 0 1 250 168.4'
 const PATH_GREEN = 'M480 584H446Q392 584 392 530V300A132 132 0 0 0 270 168.4'
 const VIEWBOX = '0 96 520 500'
 
+/** القلب وحده، للمساحات الصغيرة (الفواصل). */
 export function BrandMark({ size = 32, className }: { size?: number; className?: string }) {
   return (
     <svg
       className={className ? `brand-mark ${className}` : 'brand-mark'}
       width={size}
       height={size}
-      viewBox="0 0 32 32"
-      fill="none"
-      strokeLinecap="round"
+      viewBox={HEART.viewBox}
       aria-hidden="true"
       focusable="false"
     >
-      <path d="M8.5 27.5V15.5a7.5 7.5 0 0 1 5.3-7.17" stroke="var(--mark-a, var(--gold))" strokeWidth="2.6" />
-      <path d="M23.5 27.5V15.5a7.5 7.5 0 0 0-5.3-7.17" stroke="var(--mark-b, var(--green))" strokeWidth="2.6" />
-      <circle cx="16" cy="4.6" r="1.6" fill="var(--mark-a, var(--gold))" />
+      <path fill={INK} d={HEART.green} />
+      <path fill={ACCENT} d={HEART.gold} />
     </svg>
   )
 }
 
-export function Logo({ href = '/', tone = 'dark' }: { href?: string; tone?: 'dark' | 'light' }) {
+/**
+ * الشعار رابطًا إلى الرئيسية.
+ * lockup: الكلمة مع سطر BIDAYAH أسفلها (للفوتر)؛ دونه الكلمة وحدها (للهيدر).
+ */
+export function Logo({
+  href = '/',
+  tone = 'dark',
+  lockup = false,
+}: {
+  href?: string
+  tone?: 'dark' | 'light'
+  lockup?: boolean
+}) {
   return (
     <a className={`logo logo--${tone}`} href={href}>
-      <BrandMark size={34} />
-      <span className="logo__text">
-        <span className="logo__ar">{brand.nameAr}</span>
-        <span className="logo__en" lang="en" dir="ltr">
-          {brand.nameEn}
-        </span>
+      <svg
+        className={lockup ? 'logo__art logo__art--lockup' : 'logo__art'}
+        viewBox={lockup ? LATIN.viewBox : MARK.viewBox}
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path fill={INK} d={MARK.green} />
+        <path fill={ACCENT} d={MARK.gold} />
+        {lockup && (
+          <>
+            <path fill={INK} d={LATIN.green} />
+            <path fill={ACCENT} d={LATIN.gold} />
+          </>
+        )}
+      </svg>
+      <span className="sr-only">
+        {brand.nameAr} — الصفحة الرئيسية
       </span>
-      <span className="sr-only"> — الصفحة الرئيسية</span>
     </a>
   )
 }

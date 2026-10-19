@@ -17,7 +17,7 @@
 }
 
 .notice--demo {
-  border-color: rgb(35 74 69 / 0.22);
+  border-color: rgb(70 86 74 / 0.22);
   background: var(--mist);
 }
 
@@ -136,13 +136,13 @@
 }
 
 .input:hover {
-  border-color: rgb(32 59 55 / 0.45);
+  border-color: rgb(70 86 74 / 0.5);
 }
 
 .input:focus {
   border-color: var(--green);
   outline: none;
-  box-shadow: 0 0 0 3px rgb(35 74 69 / 0.22);
+  box-shadow: 0 0 0 3px rgb(70 86 74 / 0.22);
 }
 
 .input[dir='ltr'] {
@@ -200,7 +200,7 @@
 }
 
 .choice:hover {
-  border-color: rgb(35 74 69 / 0.5);
+  border-color: rgb(70 86 74 / 0.5);
 }
 
 .choice:has(input:checked) {

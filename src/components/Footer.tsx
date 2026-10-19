@@ -1,5 +1,5 @@
 import { applyHref, brand, footer, nav, pages, primaryCta } from '../content/site'
-import { BrandMark } from './Brand'
+import { Logo } from './Brand'
 
 /** روابط الأقسام خارج الصفحة الرئيسية تعود إليها. */
 export function Footer({ onHome = true }: { onHome?: boolean }) {
@@ -8,16 +8,7 @@ export function Footer({ onHome = true }: { onHome?: boolean }) {
     <footer className="site-footer">
       <div className="container site-footer__grid">
         <div className="site-footer__brand">
-          <a className="logo logo--light" href="/">
-            <BrandMark size={34} />
-            <span className="logo__text">
-              <span className="logo__ar">{brand.nameAr}</span>
-              <span className="logo__en" lang="en" dir="ltr">
-                {brand.nameEn}
-              </span>
-            </span>
-            <span className="sr-only"> — الصفحة الرئيسية</span>
-          </a>
+          <Logo tone="light" lockup />
           <p className="site-footer__tagline">{brand.tagline}</p>
         </div>
 
