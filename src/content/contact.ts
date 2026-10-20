@@ -22,7 +22,7 @@ export const contactIntro = {
  */
 export const channels: { kind: 'email' | 'whatsapp' | 'phone'; label: string; icon: IconName; value: string }[] = [
   { kind: 'email', label: 'البريد الإلكتروني', icon: 'message', value: '' },
-  { kind: 'whatsapp', label: 'واتساب', icon: 'listen', value: '' },
+  { kind: 'whatsapp', label: 'واتساب', icon: 'listen', value: '+20 10 4115 1402' },
   { kind: 'phone', label: 'الهاتف', icon: 'phone', value: '' },
 ]
 

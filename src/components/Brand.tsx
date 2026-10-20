@@ -1,6 +1,6 @@
 /**
  * الهوية البصرية لبداية.
- * الشعار المعتمد: كلمة «بداية» يتوسطها قلب من شخصين (أخضر وذهبي)، وأسفلها BIDAYAH.
+ * الشعار المعتمد: كلمة «بداية» يتوسطها قلب من شخصين (أزرق بترولي وذهبي)، وأسفلها BIDAYA.
  * الرسوم الزخرفية (HeroArt وMotifLines): «مساران يلتقيان عند بداية جديدة».
  */
 
@@ -30,8 +30,8 @@ export function BrandMark({ size = 32, className }: { size?: number; className?:
       aria-hidden="true"
       focusable="false"
     >
-      <path fill={INK} d={HEART.green} />
-      <path fill={ACCENT} d={HEART.gold} />
+      <path fillRule="evenodd" fill={INK} d={HEART.ink} />
+      <path fillRule="evenodd" fill={ACCENT} d={HEART.gold} />
     </svg>
   )
 }
@@ -57,12 +57,12 @@ export function Logo({
         aria-hidden="true"
         focusable="false"
       >
-        <path fill={INK} d={MARK.green} />
-        <path fill={ACCENT} d={MARK.gold} />
+        <path fillRule="evenodd" fill={INK} d={MARK.ink} />
+        <path fillRule="evenodd" fill={ACCENT} d={MARK.gold} />
         {lockup && (
           <>
-            <path fill={INK} d={LATIN.green} />
-            <path fill={ACCENT} d={LATIN.gold} />
+            <path fillRule="evenodd" fill={INK} d={LATIN.ink} />
+            <path fillRule="evenodd" fill={ACCENT} d={LATIN.gold} />
           </>
         )}
       </svg>
