@@ -127,20 +127,11 @@ textarea {
 
 .eyebrow {
   display: inline-flex;
-  align-items: center;
-  gap: 12px;
   margin: 0 0 16px;
   color: var(--gold-ink);
   font-size: var(--text-sm);
   font-weight: 500;
   line-height: 1.6;
-}
-
-.eyebrow::before {
-  content: '';
-  width: 28px;
-  height: 1.5px;
-  background: var(--gold);
 }
 
 .eyebrow--light {
