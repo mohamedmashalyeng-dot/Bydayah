@@ -112,6 +112,18 @@
   color: var(--ink-muted);
 }
 
+/* تحت عمود التعريف بجانب النموذج؛ وقبل النموذج على الشاشات الأضيق تصبح شريطًا عريضًا يُبقي الوجه ظاهرًا. */
+.contact__photo {
+  --focus: 50% 15%;
+  margin-top: 32px;
+}
+
+@media (max-width: 1023px) {
+  .contact__photo img {
+    aspect-ratio: 21 / 9;
+  }
+}
+
 /* ———— نموذج المراسلة ———— */
 
 .contact-form,

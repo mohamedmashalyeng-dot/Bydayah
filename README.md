@@ -38,6 +38,7 @@ npm run preview    # معاينة نسخة البناء
 | الألوان، الخطوط، المسافات، مدد الحركة | `src/styles/tokens.css` |
 | الرمز البصري (الرسم الرئيسي، علامة الشعار، الفاصل) | `src/components/Brand.tsx` |
 | الأيقونات (عائلة خطية موحدة) | `src/components/Icon.tsx` |
+| الصور ونصوصها البديلة (الملفات نفسها في `src/assets/photos/`) | `src/content/photos.ts` |
 | أيقونة المتصفح / صورة المشاركة | `public/favicon.svg` / `public/og.png` |
 
 ### إضافة سؤال أو تعديله

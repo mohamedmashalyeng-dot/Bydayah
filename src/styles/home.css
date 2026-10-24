@@ -3,6 +3,8 @@
 /* ———— Hero ———— */
 
 .hero {
+  position: relative;
+  isolation: isolate;
   padding-block: clamp(28px, 5vw, 64px) clamp(48px, 7vw, 96px);
 }
 
@@ -66,43 +68,71 @@
   background: var(--gold);
 }
 
-.hero__visual {
-  display: flex;
-  justify-content: center;
-}
-
-.hero-art {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
-  aspect-ratio: 520 / 500;
-  overflow: visible;
-}
-
-@media (min-width: 960px) {
-  .hero__grid {
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: 56px;
-  }
-}
-
-@media (max-width: 959px) {
-  .hero-art {
-    max-width: 340px;
-  }
-
-  .hero-art__extra {
-    display: none;
-  }
-}
-
+/*
+ * صورة الزوجين عريضة (16:9)، والزوجان في نصفها الأيسر والجدار الفاتح في نصفها الأيمن.
+ * على الهاتف واللوحي تأتي بعد النص، وبجانبه بقصّ طولي على الزوجين والقوس في الشاشات
+ * المتوسطة، ثم تمتد خلف الـHero كله من 1200px حين يتسع الجدار للنص.
+ * الاتجاهات هنا فيزيائية لأنها تتبع تكوين الصورة.
+ */
 @media (max-width: 599px) {
-  .hero-art {
-    max-width: 270px;
+  .hero__visual img {
+    aspect-ratio: 4 / 3;
+    object-position: 0% 50%;
   }
 
   .hero__actions .btn {
     flex: 1 1 100%;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1199px) {
+  .hero__grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 56px;
+  }
+
+  .hero__visual img {
+    aspect-ratio: 4 / 5;
+    object-position: 0% 50%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    display: flex;
+    align-items: center;
+    min-height: clamp(580px, 48vw, 860px);
+  }
+
+  .hero__grid {
+    grid-template-columns: minmax(0, min(660px, 56%));
+  }
+
+  .hero__lead {
+    max-width: 30em;
+  }
+
+  .hero__visual {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .hero__visual img {
+    height: 100%;
+    border-radius: 0;
+    object-position: 0% 60%;
+  }
+
+  /* تذوب الصورة في لون الصفحة من الأعلى والأسفل، ويفتح الجدار خلف النص قليلًا ليبقى مقروءًا. */
+  .hero__visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, var(--ivory), rgb(247 244 238 / 0) 72px),
+      linear-gradient(to top, var(--ivory), rgb(247 244 238 / 0) 96px),
+      linear-gradient(to left, rgb(247 244 238 / 0.9), rgb(247 244 238 / 0.74) 42%, rgb(247 244 238 / 0) 64%);
   }
 }
 
@@ -112,45 +142,14 @@
     animation-delay: calc(var(--i, 0) * 100ms + 40ms);
   }
 
-  .hero-art__path {
-    stroke-dasharray: 1;
-    stroke-dashoffset: 1;
-    animation: draw 1.7s var(--ease-out) 0.3s forwards;
-  }
-
-  .hero-art__path--b {
-    animation-delay: 0.45s;
-  }
-
-  .hero-art__dot {
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: pop 480ms var(--ease-out) 0.15s both;
-  }
-
-  .hero-art__dot--key {
-    animation-delay: 1.7s;
-  }
-
-  .hero-art__sun {
-    transform-box: view-box;
-    transform-origin: 260px 584px;
-    animation:
-      sun-in 1.2s var(--ease-out) 0.25s both,
-      breathe 7s ease-in-out 1.6s infinite alternate;
+  .hero__visual img {
+    animation: fade-in 900ms var(--ease-out) both;
   }
 }
 
-@keyframes sun-in {
+@keyframes fade-in {
   from {
     opacity: 0;
-    transform: scale(0.86);
-  }
-}
-
-@keyframes breathe {
-  to {
-    transform: scale(1.06);
   }
 }
 
@@ -336,6 +335,16 @@
 .why__grid {
   display: grid;
   gap: 36px;
+}
+
+.why__intro {
+  display: grid;
+  gap: 36px;
+}
+
+/* الظرف والخاتمان في النصف السفلي من الصورة. */
+.why__photo {
+  --focus: 50% 75%;
 }
 
 .feature-list {
@@ -537,16 +546,26 @@
   font-size: 1rem;
 }
 
+/* الطائرة أعلى الصورة والجوازان أسفلها؛ القصّ على الشاشات المتوسطة يبقيهما معًا. */
+.intl__photo {
+  --focus: 50% 35%;
+}
+
+/* على الشاشات الواسعة: النص بجانب الصورة، ثم قائمة البلدان بعرض القسم كله. */
 @media (min-width: 960px) {
   .intl__grid {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 80px;
-    align-items: start;
+    gap: 56px 80px;
+    align-items: center;
   }
 
   .intl__countries {
-    padding-inline-start: 48px;
-    border-inline-start: 1px solid var(--line-strong);
+    grid-column: 1 / -1;
+  }
+
+  .country-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 40px;
   }
 }
 

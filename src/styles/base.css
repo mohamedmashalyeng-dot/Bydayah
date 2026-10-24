@@ -512,6 +512,30 @@ textarea {
   }
 }
 
+/* ———— الصور ———— */
+/* الصورة بعرض عمودها وبنسبتها الأصلية. --focus يحدد الجزء الذي يبقى ظاهرًا عند القصّ. */
+
+.photo {
+  margin: 0;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  background: var(--mist);
+  object-fit: cover;
+  object-position: var(--focus, 50% 50%);
+}
+
+/* بين الهاتف والشاشة الواسعة تمتد الصورة بعرض الصفحة، فتُقصّ إلى 16:9 حتى لا تطغى على النص. */
+@media (min-width: 600px) and (max-width: 959px) {
+  .photo img {
+    aspect-ratio: 16 / 9;
+  }
+}
+
 /* ———— الفاصل ———— */
 
 .divider {

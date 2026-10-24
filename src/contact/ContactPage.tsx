@@ -4,8 +4,10 @@ import { buildPayload, isVisible, normalizeDigits, validateField, validateFields
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { Icon } from '../components/Icon'
+import { Photo } from '../components/Photo'
 import type { Value, Values } from '../content/apply'
 import { applyNote, channels, channelsTitle, contactFields, contactForm, contactIntro, faq } from '../content/contact'
+import { photos } from '../content/photos'
 import { applyHref, primaryCta } from '../content/site'
 import { contactEnabled, submitContact } from './submit'
 
@@ -75,6 +77,12 @@ export function ContactPage() {
                   <Icon name="arrowNext" size={18} />
                 </a>
               </div>
+
+              <Photo
+                className="contact__photo"
+                photo={photos.contact}
+                sizes="(min-width: 1280px) 480px, (min-width: 1024px) 40vw, calc(100vw - 40px)"
+              />
             </div>
 
             <ContactForm />

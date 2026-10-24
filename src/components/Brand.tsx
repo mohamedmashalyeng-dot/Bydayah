@@ -73,35 +73,18 @@ export function Logo({
   )
 }
 
-/** quiet: نسخة أهدأ دون الضوء الذهبي داخل الباب، لرؤوس الصفحات الداخلية. */
-export function HeroArt({ quiet = false }: { quiet?: boolean }) {
+/** الرسم الرئيسي: الباب والمساران، في رأس صفحة «من نحن». */
+export function HeroArt() {
   return (
     <svg className="hero-art" viewBox={VIEWBOX} fill="none" aria-hidden="true" focusable="false">
-      {!quiet && (
-        <defs>
-          <clipPath id="hero-door">
-            <path d="M156 584V300a104 104 0 0 1 208 0v284Z" />
-          </clipPath>
-        </defs>
-      )}
-
       {/* أقواس خارجية خافتة تمنح العمق — تُخفى في النسخة المختصرة على الهاتف */}
       <g className="hero-art__extra" stroke="var(--green)" strokeWidth="1">
         <path d="M100 584V300a160 160 0 0 1 320 0v284" opacity=".14" />
         <path d="M72 584V300a188 188 0 0 1 376 0v284" opacity=".1" strokeDasharray="1.5 7" strokeLinecap="round" />
       </g>
 
-      {/* الباب: مساحة خضراء فاتحة يشرق داخلها ضوء ذهبي هادئ */}
+      {/* الباب: مساحة خضراء فاتحة */}
       <path d="M156 584V300a104 104 0 0 1 208 0v284Z" fill="var(--mist)" />
-      {!quiet && (
-        <g clipPath="url(#hero-door)">
-          <g className="hero-art__sun">
-            <circle cx="260" cy="584" r="132" stroke="var(--gold)" strokeWidth="1" opacity=".45" />
-            <circle cx="260" cy="584" r="94" fill="var(--gold)" opacity=".2" />
-            <circle cx="260" cy="584" r="58" fill="var(--gold)" opacity=".32" />
-          </g>
-        </g>
-      )}
 
       <line x1="8" y1="584" x2="512" y2="584" stroke="var(--green)" strokeWidth="1" opacity=".18" />
 

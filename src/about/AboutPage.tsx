@@ -3,7 +3,9 @@ import { Divider, HeroArt } from '../components/Brand'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { Icon } from '../components/Icon'
+import { Photo } from '../components/Photo'
 import { aboutCta, aboutHero, aboutIdentity, aboutPurpose, aboutStory, aboutValues } from '../content/about'
+import { photos } from '../content/photos'
 import { stagger } from '../lib/motion'
 
 export function AboutPage() {
@@ -44,7 +46,7 @@ function Hero() {
           </p>
         </div>
         <div className="page-hero__visual">
-          <HeroArt quiet />
+          <HeroArt />
         </div>
       </div>
     </section>
@@ -78,13 +80,21 @@ function Purpose() {
       <h2 id="purpose-title" className="sr-only">
         رسالتنا ورؤيتنا
       </h2>
-      <div className="container purpose__grid">
-        {aboutPurpose.map((item, i) => (
-          <div className="purpose__item" key={item.label} data-reveal style={stagger(i)}>
-            <h3 className="purpose__label">{item.label}</h3>
-            <p className="purpose__text">{item.text}</p>
-          </div>
-        ))}
+      <div className="container purpose__layout">
+        <Photo
+          className="purpose__photo"
+          photo={photos.about}
+          sizes="(min-width: 1280px) 480px, (min-width: 960px) 40vw, calc(100vw - 40px)"
+          reveal
+        />
+        <div className="purpose__grid">
+          {aboutPurpose.map((item, i) => (
+            <div className="purpose__item" key={item.label} data-reveal style={stagger(i)}>
+              <h3 className="purpose__label">{item.label}</h3>
+              <p className="purpose__text">{item.text}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )

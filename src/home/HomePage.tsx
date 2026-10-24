@@ -1,8 +1,10 @@
 import { ArchCta } from '../components/ArchCta'
-import { Divider, HeroArt, MotifLines } from '../components/Brand'
+import { Divider, MotifLines } from '../components/Brand'
 import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { Icon } from '../components/Icon'
+import { Photo } from '../components/Photo'
+import { photos } from '../content/photos'
 import {
   applyHref,
   expectations,
@@ -75,9 +77,12 @@ function Hero() {
             ))}
           </ul>
         </div>
-        <div className="hero__visual">
-          <HeroArt />
-        </div>
+        <Photo
+          className="hero__visual"
+          photo={photos.hero}
+          sizes="(min-width: 1200px) 100vw, (min-width: 960px) 90vw, (min-width: 600px) calc(100vw - 48px), calc((100vw - 40px) * 1.34)"
+          priority
+        />
       </div>
     </section>
   )
@@ -127,11 +132,19 @@ function Why() {
   return (
     <section id="why" className="section why" aria-labelledby="why-title">
       <div className="container why__grid">
-        <header className="why__head" data-reveal>
-          <p className="eyebrow">{why.eyebrow}</p>
-          <h2 id="why-title">{why.title}</h2>
-          <p className="section-lead">{why.lead}</p>
-        </header>
+        <div className="why__intro">
+          <header className="why__head" data-reveal>
+            <p className="eyebrow">{why.eyebrow}</p>
+            <h2 id="why-title">{why.title}</h2>
+            <p className="section-lead">{why.lead}</p>
+          </header>
+          <Photo
+            className="why__photo"
+            photo={photos.why}
+            sizes="(min-width: 1280px) 480px, (min-width: 960px) 40vw, calc(100vw - 40px)"
+            reveal
+          />
+        </div>
         <ul className="feature-list">
           {why.features.map((f, i) => (
             <li className="feature" key={f.title} data-reveal style={stagger(i)}>
@@ -196,7 +209,13 @@ function International() {
             <Icon name="arrowDown" size={20} />
           </a>
         </div>
-        <div className="intl__countries" data-reveal style={stagger(1)}>
+        <Photo
+          className="intl__photo"
+          photo={photos.international}
+          sizes="(min-width: 1280px) 560px, (min-width: 960px) 45vw, calc(100vw - 40px)"
+          reveal
+        />
+        <div className="intl__countries" data-reveal>
           <h3 className="intl__label">
             <Icon name="globe" size={22} />
             {international.countriesLabel}

@@ -30,7 +30,7 @@
   font-size: var(--text-lg);
 }
 
-/* الرسم الرئيسي بنسخته الهادئة: الباب والمساران دون الضوء الذهبي. */
+/* الرسم الرئيسي: الباب والمساران. */
 .page-hero__visual {
   display: flex;
   justify-content: center;
@@ -178,10 +178,34 @@
   line-height: 1.75;
 }
 
+/* الوجوه في الثلث العلوي من الصورة. */
+.purpose__photo {
+  --focus: 50% 40%;
+}
+
+.purpose__layout {
+  display: grid;
+  gap: 48px;
+}
+
 @media (min-width: 768px) {
   .purpose__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 56px;
+  }
+}
+
+/* على الشاشات الواسعة: الصورة في جهة، والرسالة والرؤية متتاليتان في الجهة الأخرى. */
+@media (min-width: 960px) {
+  .purpose__layout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 72px;
+    align-items: center;
+  }
+
+  .purpose__grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
   }
 }
 
