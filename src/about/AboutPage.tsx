@@ -4,7 +4,7 @@ import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 import { Icon } from '../components/Icon'
 import { Photo } from '../components/Photo'
-import { aboutCta, aboutHero, aboutIdentity, aboutPurpose, aboutStory, aboutValues } from '../content/about'
+import { aboutCta, aboutFeatures, aboutHero, aboutPurpose, aboutStory } from '../content/about'
 import { photos } from '../content/photos'
 import { stagger } from '../lib/motion'
 
@@ -19,8 +19,7 @@ export function AboutPage() {
         <Hero />
         <Story />
         <Purpose />
-        <Values />
-        <Identity />
+        <Features />
         <ArchCta id="about-cta-title" title={aboutCta.title} text={aboutCta.text} secondary={aboutCta.secondary} />
       </main>
       <Footer onHome={false} />
@@ -78,7 +77,7 @@ function Purpose() {
   return (
     <section className="section section--mist purpose" aria-labelledby="purpose-title">
       <h2 id="purpose-title" className="sr-only">
-        رسالتنا ورؤيتنا
+        رؤيتنا ورسالتنا
       </h2>
       <div className="container purpose__layout">
         <Photo
@@ -100,59 +99,25 @@ function Purpose() {
   )
 }
 
-function Values() {
+function Features() {
   return (
-    <section className="section values" aria-labelledby="values-title">
-      {/* العنوان يشغل الخانة الأولى من شبكة القيم على الشاشات الواسعة */}
-      <div className="container values__grid">
-        <header className="values__head" data-reveal>
-          <p className="eyebrow">{aboutValues.eyebrow}</p>
-          <h2 id="values-title">{aboutValues.title}</h2>
-          <p className="section-lead">{aboutValues.lead}</p>
+    <section className="section features" aria-labelledby="features-title">
+      <div className="container">
+        <header className="section-head" data-reveal>
+          <p className="eyebrow">{aboutFeatures.eyebrow}</p>
+          <h2 id="features-title">{aboutFeatures.title}</h2>
         </header>
-        <ul className="values__list">
-          {aboutValues.items.map((v, i) => (
-            <li className="value" key={v.title} data-reveal style={stagger(i + 1)}>
-              <span className="value__icon">
-                <Icon name={v.icon} />
+        <ul className="features__list">
+          {aboutFeatures.items.map((f, i) => (
+            <li className="feature" key={f.title} data-reveal style={stagger(i)}>
+              <span className="feature__icon">
+                <Icon name={f.icon} />
               </span>
-              <h3>{v.title}</h3>
-              <p>{v.text}</p>
+              <h3>{f.title}</h3>
+              <p>{f.text}</p>
             </li>
           ))}
         </ul>
-      </div>
-    </section>
-  )
-}
-
-function Identity() {
-  const columns = [
-    { ...aboutIdentity.is, icon: 'check' as const, tone: 'is' },
-    { ...aboutIdentity.isNot, icon: 'close' as const, tone: 'not' },
-  ]
-  return (
-    <section className="section section--green identity" aria-labelledby="identity-title">
-      <div className="container">
-        <header className="section-head" data-reveal>
-          <p className="eyebrow eyebrow--light">{aboutIdentity.eyebrow}</p>
-          <h2 id="identity-title">{aboutIdentity.title}</h2>
-        </header>
-        <div className="identity__cols">
-          {columns.map((col, i) => (
-            <div className={`identity__col identity__col--${col.tone}`} key={col.title} data-reveal style={stagger(i)}>
-              <h3>{col.title}</h3>
-              <ul>
-                {col.items.map((item) => (
-                  <li key={item}>
-                    <Icon name={col.icon} size={20} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   )
