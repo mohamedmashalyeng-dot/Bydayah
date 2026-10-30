@@ -317,56 +317,6 @@ textarea {
   }
 }
 
-/* ———— شريط الركائز ———— */
-/* يتحرك مع الصفحة ولا يثبت مع الهيدر، فتبقى --header-h صحيحة للقائمة والروابط الداخلية. */
-
-.pillars {
-  background: var(--green);
-  color: var(--on-green);
-  font-size: var(--text-sm);
-  line-height: 1.5;
-}
-
-.pillars ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-block: 0;
-  padding: 7px 0;
-  list-style: none;
-}
-
-.pillars li {
-  display: inline-flex;
-  align-items: center;
-}
-
-.pillars li + li::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  margin-inline: 12px;
-  border-radius: 50%;
-  background: var(--gold-soft);
-}
-
-/* لا تتسع الركائز لسطر واحد على الهاتف: الثالثة في سطر مستقل دون نقطة في أوله. */
-@media (max-width: 599px) {
-  .pillars li:last-child {
-    flex-basis: 100%;
-    justify-content: center;
-  }
-
-  .pillars li:last-child::before {
-    display: none;
-  }
-}
-
-/* قائمة الهاتف مثبتة تحت الهيدر مباشرة، فيختفي الشريط وهي مفتوحة حتى لا تغطي الهيدر. */
-html.menu-open .pillars {
-  display: none;
-}
-
 /* ———— الهيدر ———— */
 
 .site-header {

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { applyHref, homeLink, pages, pillars, primaryCta } from '../content/site'
+import { applyHref, homeLink, pages, primaryCta } from '../content/site'
 import { Logo } from './Brand'
 import { Icon } from './Icon'
 
@@ -8,7 +8,6 @@ const FOCUSABLE = 'a[href], button:not([disabled])'
 /**
  * site: روابط الصفحات (الرئيسية، من نحن، تواصل معنا)، و`current` يعلّم الصفحة الحالية.
  * apply: رابط العودة فقط حتى لا تشتت الاستمارة.
- * شريط الركائز فوق الهيدر في النوعين، فيظهر في كل صفحات الموقع.
  */
 export function Header({ variant = 'site', current }: { variant?: 'site' | 'apply'; current?: string }) {
   const [scrolled, setScrolled] = useState(false)
@@ -83,73 +82,64 @@ export function Header({ variant = 'site', current }: { variant?: 'site' | 'appl
   const isCurrent = (href: string) => (href === current ? 'page' : undefined)
 
   return (
-    <>
-      <div className="pillars">
-        <ul className="container" aria-label="خدمات بداية">
-          {pillars.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </div>
-      <header className={classes}>
-        <div className="container site-header__bar">
-          <Logo />
+    <header className={classes}>
+      <div className="container site-header__bar">
+        <Logo />
 
-          {withMenu ? (
-            <>
-              <nav className="site-nav" aria-label="القائمة الرئيسية">
-                <ul>
-                  {links.map((item) => (
-                    <li key={item.href}>
-                      <a href={item.href} aria-current={isCurrent(item.href)}>
-                        {item.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-              <a className="btn btn--primary btn--sm site-header__cta" href={applyHref}>
-                {primaryCta}
-              </a>
-              <button
-                ref={toggleRef}
-                type="button"
-                className="menu-toggle"
-                aria-expanded={open}
-                aria-controls="site-menu"
-                onClick={() => setOpen((v) => !v)}
-              >
-                <Icon name={open ? 'close' : 'menu'} />
-                <span>{open ? 'إغلاق' : 'القائمة'}</span>
-              </button>
-            </>
-          ) : (
-            <a className="link-back" href="/">
-              <Icon name="arrowPrev" size={20} />
-              العودة إلى الرئيسية
-            </a>
-          )}
-        </div>
-
-        {withMenu && (
-          <div id="site-menu" className="mobile-menu" ref={panelRef} hidden={!open}>
-            <nav className="container" aria-label="القائمة">
+        {withMenu ? (
+          <>
+            <nav className="site-nav" aria-label="القائمة الرئيسية">
               <ul>
                 {links.map((item) => (
                   <li key={item.href}>
-                    <a href={item.href} aria-current={isCurrent(item.href)} onClick={() => setOpen(false)}>
+                    <a href={item.href} aria-current={isCurrent(item.href)}>
                       {item.label}
                     </a>
                   </li>
                 ))}
               </ul>
-              <a className="btn btn--primary btn--block" href={applyHref}>
-                {primaryCta}
-              </a>
             </nav>
-          </div>
+            <a className="btn btn--primary btn--sm site-header__cta" href={applyHref}>
+              {primaryCta}
+            </a>
+            <button
+              ref={toggleRef}
+              type="button"
+              className="menu-toggle"
+              aria-expanded={open}
+              aria-controls="site-menu"
+              onClick={() => setOpen((v) => !v)}
+            >
+              <Icon name={open ? 'close' : 'menu'} />
+              <span>{open ? 'إغلاق' : 'القائمة'}</span>
+            </button>
+          </>
+        ) : (
+          <a className="link-back" href="/">
+            <Icon name="arrowPrev" size={20} />
+            العودة إلى الرئيسية
+          </a>
         )}
-      </header>
-    </>
+      </div>
+
+      {withMenu && (
+        <div id="site-menu" className="mobile-menu" ref={panelRef} hidden={!open}>
+          <nav className="container" aria-label="القائمة">
+            <ul>
+              {links.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href} aria-current={isCurrent(item.href)} onClick={() => setOpen(false)}>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <a className="btn btn--primary btn--block" href={applyHref}>
+              {primaryCta}
+            </a>
+          </nav>
+        </div>
+      )}
+    </header>
   )
 }

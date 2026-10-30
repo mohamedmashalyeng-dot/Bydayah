@@ -43,6 +43,35 @@
   gap: 12px;
 }
 
+/* النقطة في الفراغ بين البنود، فتُقص عند بداية أي سطر جديد ولا يبدأ بها السطر. */
+.assurances {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 29px;
+  margin: 28px 0 0;
+  padding: 0;
+  overflow: hidden;
+  color: var(--ink-muted);
+  font-size: var(--text-sm);
+  list-style: none;
+}
+
+.assurances li {
+  position: relative;
+}
+
+.assurances li::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  inset-inline-start: -17px;
+  width: 5px;
+  height: 5px;
+  margin-block-start: -2.5px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
 /*
  * صورة الزوجين عريضة (16:9)، والزوجان في نصفها الأيسر والجدار الفاتح في نصفها الأيمن.
  * على الهاتف واللوحي تأتي بعد النص، وبجانبه بقصّ طولي على الزوجين والقوس في الشاشات
