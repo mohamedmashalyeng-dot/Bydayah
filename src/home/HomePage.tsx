@@ -7,6 +7,7 @@ import { Photo } from '../components/Photo'
 import { photos } from '../content/photos'
 import {
   applyHref,
+  contracts,
   expectations,
   finalCta,
   hero,
@@ -37,6 +38,7 @@ export function HomePage() {
         <Divider />
         <Stories />
         <International />
+        <Contracts />
         <Privacy />
         <Expectations />
         <ArchCta id="final-title" title={finalCta.title} text={finalCta.text} />
@@ -228,8 +230,41 @@ function International() {
           <p className="note">{international.countriesNote}</p>
         </div>
       </div>
+    </section>
+  )
+}
 
+function Contracts() {
+  return (
+    <section id="contracts" className="section contracts" aria-labelledby="contracts-title">
       <div className="container">
+        <header className="section-head" data-reveal>
+          <h2 id="contracts-title">{contracts.title}</h2>
+          {contracts.paragraphs.map((p) => (
+            <p className="section-lead" key={p}>
+              {p}
+            </p>
+          ))}
+        </header>
+        <h3 className="contracts__label" data-reveal>
+          {contracts.servicesTitle}
+        </h3>
+        <ol className="services">
+          {contracts.services.map((s, i) => (
+            <li className="service" key={s.title} data-reveal style={stagger(i)}>
+              <span className="service__num" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h4 className="service__title">{s.title}</h4>
+              <p className="service__text">{s.text}</p>
+            </li>
+          ))}
+        </ol>
+        <div className="contracts__closing" data-reveal>
+          <h3>{contracts.closing.title}</h3>
+          <p>{contracts.closing.text}</p>
+        </div>
+
         <section id="legal" className="legal" aria-labelledby="legal-title" data-reveal>
           <div className="legal__head">
             <span className="legal__icon">
@@ -241,18 +276,6 @@ function International() {
               </h3>
               <p className="legal__lead">{legal.lead}</p>
             </div>
-          </div>
-          <div className="legal__cols">
-            {legal.columns.map((col) => (
-              <div className="legal__col" key={col.title}>
-                <h4>{col.title}</h4>
-                <ul>
-                  {col.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
           </div>
         </section>
       </div>
