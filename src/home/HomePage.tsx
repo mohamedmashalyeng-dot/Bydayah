@@ -71,11 +71,6 @@ function Hero() {
               {hero.secondary.label}
             </a>
           </div>
-          <ul className="assurances hero__in" style={stagger(4)} aria-label="مبادئ الخدمة">
-            {hero.assurances.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
         </div>
         <Photo
           className="hero__visual"
