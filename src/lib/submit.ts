@@ -2,7 +2,7 @@
  * إرسال نموذج إلى الخادم، مشترك بين استمارة الطلب ونموذج التواصل.
  *
  * العقد المتوقع من الخادم (انظر README):
- *   POST <endpoint>  Content-Type: application/json  — الجسم: { formVersion, answers }
+ *   POST <endpoint>  Content-Type: application/json  — الجسم: { formVersion, answers, summary }
  *   2xx  → تم الاستلام.
  *   422  → { fieldErrors: { [fieldId]: "رسالة عربية" } } عند فشل التحقق على الخادم.
  *   غير ذلك → خطأ عام.

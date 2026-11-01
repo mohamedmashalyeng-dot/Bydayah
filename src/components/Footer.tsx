@@ -1,5 +1,8 @@
-import { applyHref, brand, footer, nav, pages, primaryCta } from '../content/site'
+import { applyHref, brand, footer, nav, pages, primaryCta, socialLinks } from '../content/site'
 import { Logo } from './Brand'
+import { Icon } from './Icon'
+
+const visibleSocial = socialLinks.filter((s) => s.href.trim())
 
 /** روابط الأقسام خارج الصفحة الرئيسية تعود إليها. */
 export function Footer({ onHome = true }: { onHome?: boolean }) {
@@ -10,6 +13,17 @@ export function Footer({ onHome = true }: { onHome?: boolean }) {
         <div className="site-footer__brand">
           <Logo tone="light" lockup />
           <p className="site-footer__tagline">{brand.tagline}</p>
+          {visibleSocial.length > 0 && (
+            <ul className="site-footer__social" aria-label={footer.socialTitle}>
+              {visibleSocial.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
+                    <Icon name={s.icon} size={22} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         <nav className="site-footer__nav" aria-label={footer.linksTitle}>
@@ -31,7 +45,10 @@ export function Footer({ onHome = true }: { onHome?: boolean }) {
           </ul>
         </nav>
 
-        <p className="site-footer__disclaimer">{footer.disclaimer}</p>
+        <div className="site-footer__disclaimer">
+          <h2 className="site-footer__title">{footer.disclaimerTitle}</h2>
+          <p>{footer.disclaimer}</p>
+        </div>
       </div>
       <div className="container site-footer__bottom">
         <p>

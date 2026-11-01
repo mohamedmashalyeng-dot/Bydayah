@@ -109,6 +109,19 @@ export function displayValue(field: Field, values: Values): string | null {
   }
 }
 
+/** نسخة مقروءة من الإجابات لرسالة البريد: السؤال وإجابته كما في صفحة المراجعة. */
+function buildSummary(steps: Step[], extra: Field[], values: Values) {
+  return [...steps, { title: '', fields: extra }]
+    .map(({ title, fields }) => ({
+      title,
+      rows: fields.flatMap((field) => {
+        const value = isVisible(field, values) ? displayValue(field, values) : null
+        return value ? [{ label: field.label, value }] : []
+      }),
+    }))
+    .filter((group) => group.rows.length > 0)
+}
+
 /**
  * يبني بيانات الإرسال من الحقول الظاهرة فقط، فلا تُرسل إجابات حقول أُخفيت
  * بعد تغيير اختيار سابق (مثل تفاصيل الأبناء بعد اختيار «لا»).
@@ -138,5 +151,5 @@ export function buildPayload(steps: Step[], extra: Field[], values: Values) {
       if (v) answers[field.id] = v
     }
   }
-  return { formVersion: 1, answers }
+  return { formVersion: 1, answers, summary: buildSummary(steps, extra, values) }
 }
