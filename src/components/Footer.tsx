@@ -2,8 +2,6 @@ import { applyHref, brand, footer, nav, pages, primaryCta, socialLinks } from '.
 import { Logo } from './Brand'
 import { Icon } from './Icon'
 
-const visibleSocial = socialLinks.filter((s) => s.href.trim())
-
 /** روابط الأقسام خارج الصفحة الرئيسية تعود إليها. */
 export function Footer({ onHome = true }: { onHome?: boolean }) {
   const prefix = onHome ? '' : '/'
@@ -13,17 +11,21 @@ export function Footer({ onHome = true }: { onHome?: boolean }) {
         <div className="site-footer__brand">
           <Logo tone="light" lockup />
           <p className="site-footer__tagline">{brand.tagline}</p>
-          {visibleSocial.length > 0 && (
-            <ul className="site-footer__social" aria-label={footer.socialTitle}>
-              {visibleSocial.map((s) => (
-                <li key={s.label}>
+          <ul className="site-footer__social" aria-label={footer.socialTitle}>
+            {socialLinks.map((s) => (
+              <li key={s.label}>
+                {s.href ? (
                   <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
                     <Icon name={s.icon} size={22} />
                   </a>
-                </li>
-              ))}
-            </ul>
-          )}
+                ) : (
+                  <span>
+                    <Icon name={s.icon} size={22} label={s.label} />
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
         </div>
 
         <nav className="site-footer__nav" aria-label={footer.linksTitle}>

@@ -298,7 +298,7 @@ textarea {
 }
 
 .logo__art--lockup {
-  height: 104px;
+  height: 130px;
 }
 
 /* فوق الأخضر: الكلمة بلون الكريمي والقلب بالذهبي الفاتح */
@@ -313,7 +313,7 @@ textarea {
   }
 
   .logo__art--lockup {
-    height: 116px;
+    height: 145px;
   }
 }
 
@@ -665,7 +665,8 @@ textarea {
   list-style: none;
 }
 
-.site-footer__social a {
+.site-footer__social a,
+.site-footer__social span {
   display: grid;
   place-items: center;
   width: 44px;
@@ -673,10 +674,16 @@ textarea {
   border: 1px solid var(--line-on-green);
   border-radius: 50%;
   color: var(--white);
+  transition:
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease),
+    color var(--dur) var(--ease);
 }
 
-.site-footer__social a:hover {
+.site-footer__social a:hover,
+.site-footer__social span:hover {
   border-color: var(--gold-soft);
+  box-shadow: 0 0 16px 3px rgb(230 204 154 / 0.6);
   color: var(--gold-soft);
 }
 
@@ -703,11 +710,6 @@ textarea {
 .site-footer__nav a:hover {
   text-decoration: underline;
   text-decoration-color: var(--gold-soft);
-}
-
-.site-footer__disclaimer .site-footer__title {
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--gold-soft);
 }
 
 .site-footer__disclaimer p {

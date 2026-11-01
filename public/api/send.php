@@ -19,8 +19,9 @@ const MAX_BODY_BYTES = 65536;
 const MAX_LABEL_CHARS = 400;
 const MAX_VALUE_CHARS = 2000;
 
-// حد الرسائل لكل عنوان IP، حماية من الإغراق.
-const RATE_LIMIT = 5;
+// حد الرسائل لكل عنوان IP، حماية من الإغراق. واسع عمدًا: إن أخفى الـCDN عناوين الزوار
+// صار حدًا مشتركًا بينهم، ورفض طلب حقيقي أسوأ من وصول رسائل مزعجة.
+const RATE_LIMIT = 20;
 const RATE_WINDOW_SECONDS = 600;
 
 ini_set('display_errors', '0');

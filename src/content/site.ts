@@ -12,6 +12,7 @@ export const brand = {
   nameAr: 'بداية',
   nameEn: 'Bidayah',
   tagline: 'وساطة زواج سرية… نحو بداية حياة جديدة',
+  logoLine: 'منصــة للــزواج الشرعــي',
 }
 
 export const applyHref = '/apply/'
@@ -280,7 +281,7 @@ export const finalCta = {
   text: 'املأ طلبك بسرية، وسيتواصل معك فريق بداية لفهم ما تبحث عنه.',
 }
 
-/** حسابات التواصل الاجتماعي في الفوتر: الحساب الذي يبقى رابطه فارغًا لا يظهر. */
+/** حسابات التواصل الاجتماعي في الفوتر: الأيقونة دون رابط تظهر ولا تُضغط حتى يُضاف رابطها. */
 export const socialLinks: { label: string; icon: IconName; href: string }[] = [
   { label: 'فيسبوك', icon: 'facebook', href: '' },
   { label: 'إنستجرام', icon: 'instagram', href: '' },
