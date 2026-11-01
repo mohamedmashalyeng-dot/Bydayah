@@ -4,6 +4,7 @@
  * الرسوم الزخرفية (HeroArt وMotifLines): «مساران يلتقيان عند بداية جديدة».
  */
 
+import logoFull from '../assets/logo-full.jpg'
 import { brand } from '../content/site'
 import { HEART, LATIN, MARK } from './logoPaths'
 
@@ -36,38 +37,32 @@ export function BrandMark({ size = 32, className }: { size?: number; className?:
   )
 }
 
-/**
- * الشعار رابطًا إلى الرئيسية.
- * lockup: الشعار كاملًا بسطر BIDAYA وعبارة الشعار (للفوتر)؛ دونه الكلمة وحدها (للهيدر).
- */
-export function Logo({
-  href = '/',
-  tone = 'dark',
-  lockup = false,
-}: {
-  href?: string
-  tone?: 'dark' | 'light'
-  lockup?: boolean
-}) {
+/** الشعار المعتمد كما هو، صورة لا رسم، رابطًا إلى الرئيسية (للهيدر). */
+export function OfficialLogo() {
   return (
-    <a className={`logo logo--${tone}`} href={href}>
-      <svg
-        className={lockup ? 'logo__art logo__art--lockup' : 'logo__art'}
-        viewBox={lockup ? LATIN.viewBox : MARK.viewBox}
-        aria-hidden="true"
-        focusable="false"
-      >
+    <a className="logo" href="/">
+      <span className="logo__frame">
+        <img src={logoFull} width={1600} height={1600} alt="" />
+      </span>
+      <span className="sr-only">
+        {brand.nameAr} — الصفحة الرئيسية
+      </span>
+    </a>
+  )
+}
+
+/** الشعار بألوان فاتحة رابطًا إلى الرئيسية، مرسومًا لأن خلفية الصورة المعتمدة بيضاء (للفوتر فوق الأخضر). */
+export function LightLogo() {
+  return (
+    <a className="logo logo--light" href="/">
+      <svg className="logo__art" viewBox={LATIN.viewBox} aria-hidden="true" focusable="false">
         <path fillRule="evenodd" fill={INK} d={MARK.ink} />
         <path fillRule="evenodd" fill={ACCENT} d={MARK.gold} />
-        {lockup && (
-          <>
-            <path fillRule="evenodd" fill={INK} d={LATIN.ink} />
-            <path fillRule="evenodd" fill={ACCENT} d={LATIN.gold} />
-            <text x="1240" y="1884" fill={ACCENT} fontSize="112" fontWeight="700" textAnchor="middle">
-              {brand.logoLine}
-            </text>
-          </>
-        )}
+        <path fillRule="evenodd" fill={INK} d={LATIN.ink} />
+        <path fillRule="evenodd" fill={ACCENT} d={LATIN.gold} />
+        <text x="1240" y="1884" fill={ACCENT} fontSize="112" fontWeight="700" textAnchor="middle">
+          {brand.logoLine}
+        </text>
       </svg>
       <span className="sr-only">
         {brand.nameAr} — الصفحة الرئيسية

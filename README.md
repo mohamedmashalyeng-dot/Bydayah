@@ -37,6 +37,8 @@ npm run preview    # معاينة نسخة البناء
 | أسئلة الاستمارة، الاختيارات، الشروط، الإقرار، مسودة الخصوصية | `src/content/apply.ts` |
 | الألوان، الخطوط، المسافات، مدد الحركة | `src/styles/tokens.css` |
 | الرمز البصري (الرسم الرئيسي، علامة الشعار، الفاصل) | `src/components/Brand.tsx` |
+| الشعار المعتمد في الهيدر (الصورة الأصلية دون تعديل) | `src/assets/logo-full.jpg` |
+| فيديو خلفية القسم الأخير في الرئيسية وصورته الثابتة | `src/assets/final-background.mp4` و`.jpg` |
 | الأيقونات (عائلة خطية موحدة) | `src/components/Icon.tsx` |
 | الصور ونصوصها البديلة (الملفات نفسها في `src/assets/photos/`) | `src/content/photos.ts` |
 | أيقونة المتصفح / صورة المشاركة | `public/favicon.svg` / `public/og.png` |

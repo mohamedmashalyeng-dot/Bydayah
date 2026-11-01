@@ -1,3 +1,5 @@
+import finalPoster from '../assets/final-background.jpg'
+import finalVideo from '../assets/final-background.mp4'
 import { ArchCta } from '../components/ArchCta'
 import { Divider, MotifLines } from '../components/Brand'
 import { Footer } from '../components/Footer'
@@ -41,7 +43,7 @@ export function HomePage() {
         <Contracts />
         <Privacy />
         <Expectations />
-        <ArchCta id="final-title" title={finalCta.title} text={finalCta.text} />
+        <ArchCta id="final-title" title={finalCta.title} text={finalCta.text} video={{ src: finalVideo, poster: finalPoster }} />
       </main>
       <Footer />
     </>

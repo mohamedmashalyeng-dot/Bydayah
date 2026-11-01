@@ -50,7 +50,7 @@
   --section-y: clamp(72px, 4rem + 5vw, 144px);
   --gutter: 20px;
   --content-max: 1200px;
-  --header-h: 72px;
+  --header-h: 88px;
 
   --radius-sm: 8px;
   --radius: 12px;
@@ -75,6 +75,6 @@
 @media (min-width: 960px) {
   :root {
     --gutter: 40px;
-    --header-h: 80px;
+    --header-h: 104px;
   }
 }

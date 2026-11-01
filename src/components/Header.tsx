@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { applyHref, homeLink, pages, primaryCta } from '../content/site'
-import { Logo } from './Brand'
+import { OfficialLogo } from './Brand'
 import { Icon } from './Icon'
 
 const FOCUSABLE = 'a[href], button:not([disabled])'
@@ -84,7 +84,7 @@ export function Header({ variant = 'site', current }: { variant?: 'site' | 'appl
   return (
     <header className={classes}>
       <div className="container site-header__bar">
-        <Logo />
+        <OfficialLogo />
 
         {withMenu ? (
           <>

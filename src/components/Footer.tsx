@@ -1,5 +1,5 @@
 import { applyHref, brand, footer, nav, pages, primaryCta, socialLinks } from '../content/site'
-import { Logo } from './Brand'
+import { LightLogo } from './Brand'
 import { Icon } from './Icon'
 
 /** روابط الأقسام خارج الصفحة الرئيسية تعود إليها. */
@@ -9,7 +9,7 @@ export function Footer({ onHome = true }: { onHome?: boolean }) {
     <footer className="site-footer">
       <div className="container site-footer__grid">
         <div className="site-footer__brand">
-          <Logo tone="light" lockup />
+          <LightLogo />
           <p className="site-footer__tagline">{brand.tagline}</p>
           <ul className="site-footer__social" aria-label={footer.socialTitle}>
             {socialLinks.map((s) => (

@@ -1,4 +1,5 @@
 import { applyHref, primaryCta } from '../content/site'
+import { BackgroundVideo } from './BackgroundVideo'
 import { Icon } from './Icon'
 
 type Props = {
@@ -6,12 +7,14 @@ type Props = {
   title: string
   text: string
   secondary?: { label: string; href: string }
+  video?: { src: string; poster: string }
 }
 
 /** الدعوة الختامية: نص داخل قوس من مسارين، تنتهي بزر بدء الطلب. */
-export function ArchCta({ id, title, text, secondary }: Props) {
+export function ArchCta({ id, title, text, secondary, video }: Props) {
   return (
-    <section className="section section--mist final" aria-labelledby={id}>
+    <section className={`section section--mist final${video ? ' final--video' : ''}`} aria-labelledby={id}>
+      {video && <BackgroundVideo src={video.src} poster={video.poster} />}
       <div className="container">
         <div className="arch" data-reveal>
           <div className="arch__frame" aria-hidden="true">

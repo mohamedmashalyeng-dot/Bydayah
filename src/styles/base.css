@@ -291,13 +291,27 @@ textarea {
   text-decoration: none;
 }
 
+/* صورة الشعار الأصلية كما هي؛ الإطار يخفي هامشها الأبيض الفارغ فقط، وإلا صغر الشعار حتى لا يُقرأ. */
+.logo__frame {
+  position: relative;
+  display: block;
+  height: 74px;
+  aspect-ratio: 1109 / 727;
+  overflow: hidden;
+}
+
+.logo__frame img {
+  position: absolute;
+  top: -72.35%;
+  left: -19.84%;
+  width: 144.28%;
+  max-width: none;
+  height: auto;
+}
+
 .logo__art {
   display: block;
   width: auto;
-  height: 40px;
-}
-
-.logo__art--lockup {
   height: 130px;
 }
 
@@ -308,11 +322,11 @@ textarea {
 }
 
 @media (min-width: 960px) {
-  .logo__art {
-    height: 50px;
+  .logo__frame {
+    height: 90px;
   }
 
-  .logo__art--lockup {
+  .logo__art {
     height: 145px;
   }
 }
@@ -333,7 +347,7 @@ textarea {
 .site-header.is-scrolled,
 .site-header.is-open {
   border-bottom-color: var(--line);
-  background: rgb(255 255 255 / 0.96);
+  background: var(--white);
 }
 
 .site-header__bar {
@@ -542,6 +556,33 @@ textarea {
 }
 
 /* ———— الدعوة الأخيرة: نص داخل قوس من مسارين ———— */
+
+/* فيديو خلفية القسم، وفوقه طبقة خفيفة بلون القسم حتى يبقى النص مقروءًا. */
+.final--video {
+  position: relative;
+  overflow: hidden;
+}
+
+.final--video::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: color-mix(in srgb, var(--mist) 45%, transparent);
+}
+
+.final--video .container {
+  position: relative;
+  z-index: 2;
+}
+
+.bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .arch {
   position: relative;
