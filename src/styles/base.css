@@ -753,6 +753,18 @@ textarea {
   text-decoration-color: var(--gold-soft);
 }
 
+/* مساحة لمس مريحة على الهاتف واللوحي، مع بقاء حجم النص كما هو. */
+@media (max-width: 959px) {
+  .site-footer__nav ul {
+    gap: 0;
+  }
+
+  .site-footer__nav a {
+    display: inline-block;
+    padding-block: 11px;
+  }
+}
+
 .site-footer__disclaimer p {
   margin: 0;
   line-height: 1.95;
