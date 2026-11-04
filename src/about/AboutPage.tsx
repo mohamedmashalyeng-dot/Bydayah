@@ -57,11 +57,19 @@ function Story() {
     <section className="about-story" aria-labelledby="story-title">
       <Divider />
       <div className="container about-story__grid">
-        <div data-reveal>
-          <h2 id="story-title" className="eyebrow">
-            {aboutStory.title}
-          </h2>
-          <p className="about-story__statement">{aboutStory.statement}</p>
+        <div className="about-story__intro">
+          <div data-reveal>
+            <h2 id="story-title" className="eyebrow">
+              {aboutStory.title}
+            </h2>
+            <p className="about-story__statement">{aboutStory.statement}</p>
+          </div>
+          <Photo
+            className="about-story__photo"
+            photo={photos.consultation}
+            sizes="(min-width: 1280px) 660px, (min-width: 960px) 55vw, calc(100vw - 40px)"
+            reveal
+          />
         </div>
         <div className="about-story__body" data-reveal style={stagger(1)}>
           {aboutStory.paragraphs.map((p) => (
@@ -102,11 +110,19 @@ function Purpose() {
 function Features() {
   return (
     <section className="section features" aria-labelledby="features-title">
-      <div className="container">
-        <header className="section-head" data-reveal>
-          <p className="eyebrow">{aboutFeatures.eyebrow}</p>
-          <h2 id="features-title">{aboutFeatures.title}</h2>
-        </header>
+      <div className="container features__grid">
+        <div className="features__intro">
+          <header data-reveal>
+            <p className="eyebrow">{aboutFeatures.eyebrow}</p>
+            <h2 id="features-title">{aboutFeatures.title}</h2>
+          </header>
+          <Photo
+            className="features__photo"
+            photo={photos.contract}
+            sizes="(min-width: 1280px) 480px, (min-width: 960px) 40vw, calc(100vw - 40px)"
+            reveal
+          />
+        </div>
         <ul className="features__list">
           {aboutFeatures.items.map((f, i) => (
             <li className="feature" key={f.title} data-reveal style={stagger(i)}>

@@ -106,6 +106,16 @@
   margin-top: clamp(40px, 6vw, 88px);
 }
 
+.about-story__intro {
+  display: grid;
+  gap: 40px;
+}
+
+/* الوجهان في الثلث العلوي من الصورة. */
+.about-story__photo {
+  --focus: 50% 35%;
+}
+
 .about-story__statement {
   max-width: 20em;
   margin: 0;
@@ -186,12 +196,17 @@
   }
 }
 
-/* على الشاشات الواسعة: الصورة في جهة، والرسالة والرؤية متتاليتان في الجهة الأخرى. */
+/* على الشاشات الواسعة: الرسالة والرؤية متتاليتان، والصورة في الجهة الأخرى، عكس جهة
+   صورتي «نهجنا» و«ما الذي يميز بداية؟» حتى تتناوب صور الصفحة بين الجهتين. */
 @media (min-width: 960px) {
   .purpose__layout {
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: 72px;
     align-items: center;
+  }
+
+  .purpose__photo {
+    order: 1;
   }
 
   .purpose__grid {
@@ -201,6 +216,21 @@
 }
 
 /* ———— ما الذي يميز بداية ———— */
+
+.features__grid {
+  display: grid;
+  gap: 36px;
+}
+
+.features__intro {
+  display: grid;
+  gap: 36px;
+}
+
+/* الوثيقة والقلم في منتصف الصورة، والميزان أعلاها. */
+.features__photo {
+  --focus: 50% 45%;
+}
 
 .features__list {
   display: grid;
@@ -242,9 +272,15 @@
   }
 }
 
-@media (min-width: 1024px) {
+/* على الشاشات الواسعة: العنوان والصورة في جهة، والمميزات في عمودين بالجهة الأخرى. */
+@media (min-width: 960px) {
+  .features__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 72px;
+    align-items: start;
+  }
+
   .features__list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 56px;
+    column-gap: 48px;
   }
 }
